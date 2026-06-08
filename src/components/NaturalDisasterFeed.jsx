@@ -1,4 +1,4 @@
-function NaturalDisasterFeed({ incidents }) {
+function NaturalDisasterFeed({ incidents, className = '' }) {
   const severityStyles = {
     high: 'bg-red-500/20 text-red-400',
     medium: 'bg-amber-500/20 text-amber-400',
@@ -11,7 +11,7 @@ function NaturalDisasterFeed({ incidents }) {
   }
 
   return (
-    <div className="rounded-xl border border-grid-border bg-grid-card p-6">
+    <div className={`rounded-xl border border-grid-border bg-grid-card p-6 ${className}`.trim()}>
       <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-300">
         Natural Disaster Feed
       </h3>
@@ -20,7 +20,7 @@ function NaturalDisasterFeed({ incidents }) {
       {incidents.length === 0 ? (
         <p className="mt-4 text-sm text-slate-400">No active disaster events available right now.</p>
       ) : (
-        <ul className="mt-4 max-h-64 space-y-4 overflow-y-auto">
+        <ul className="mt-4 flex-1 space-y-4 overflow-y-auto">
           {incidents.map((inc) => (
             <li key={inc.id} className="border-b border-grid-border pb-4 last:border-0 last:pb-0">
               <div className="flex items-start justify-between gap-2">
